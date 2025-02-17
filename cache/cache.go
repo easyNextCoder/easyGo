@@ -7,6 +7,7 @@ import (
 )
 
 var (
+	//New(defaultExpiration, cleanupInterval time.Duration)
 	gcache *cache.Cache = cache.New(time.Second*5, time.Millisecond*100)
 )
 
