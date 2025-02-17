@@ -60,7 +60,7 @@ func scheduleWork(thisSpec string, nextN int) {
 
 		next := schedule.Next(now)
 
-		str := fmt.Sprintf("next time is:%v\n", next)
+		str := fmt.Sprintf("next execute time is:%v\n", next)
 		if nextN == 0 {
 			str += "\n"
 		}
@@ -76,7 +76,7 @@ func main() {
 
 	for _, spec := range specs {
 		fmt.Printf("spec is %s\n", spec)
-		scheduleWork(spec, 10)
+		scheduleWork(spec, 6)
 	}
 
 }
