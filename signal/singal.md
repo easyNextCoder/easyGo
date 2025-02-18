@@ -1,3 +1,15 @@
+## 用法: 实现优雅退出
+
+Ctrl + C    -> SIGINT信号，表示中断，默认行为就是终止程序
+Ctrl + \    -> SIGQUIT信号，跟sigint信号差不多，但这个信号会生成core文件，同时在终端打印日志
+kill pid    -> SIGTERM信号，通常supervisorctl stop xxx 会发出此信号
+kill -9 pid -> SIGKILL信号，程序无法捕获会立即执行退出
+
+通常只监听SIGINT、SIGQUIT、SIGTERM这三个信号，然后通知各个在此注册的模块保存缓存信息
+
+
+
+```go
 package main
 
 import (
@@ -81,3 +93,6 @@ func Test_signalSaveBeforeStop(t *testing.T) {
 	time.Sleep(time.Second * 12)
 	fmt.Println("system shutdown")
 }
+
+```
+
