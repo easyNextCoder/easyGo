@@ -1,3 +1,5 @@
+[代码地址]()
+
 ## 用法: 实现优雅退出
 
 Ctrl + C    -> SIGINT信号，表示中断，默认行为就是终止程序
@@ -6,7 +8,6 @@ kill pid    -> SIGTERM信号，通常supervisorctl stop xxx 会发出此信号
 kill -9 pid -> SIGKILL信号，程序无法捕获会立即执行退出
 
 通常只监听SIGINT、SIGQUIT、SIGTERM这三个信号，然后通知各个在此注册的模块保存缓存信息
-
 
 
 ```go
