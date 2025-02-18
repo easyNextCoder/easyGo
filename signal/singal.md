@@ -1,11 +1,12 @@
-[代码地址]()
+[代码地址](https://github.com/easyNextCoder/easyGo/blob/main/signal/signal_graceful_exit.go)
 
 ## 用法: 实现优雅退出
 
-Ctrl + C    -> SIGINT信号，表示中断，默认行为就是终止程序
-Ctrl + \    -> SIGQUIT信号，跟sigint信号差不多，但这个信号会生成core文件，同时在终端打印日志
-kill pid    -> SIGTERM信号，通常supervisorctl stop xxx 会发出此信号
-kill -9 pid -> SIGKILL信号，程序无法捕获会立即执行退出
+* signal信号产生
+  * SIGINT信号（Ctrl + C），表示中断，默认行为就是终止程序
+  * SIGQUIT信号（Ctrl + \），跟sigint信号差不多，但这个信号会生成core文件，同时在终端打印日志
+  * SIGTERM信号（kill pid），通常supervisorctl stop xxx 会发出此信号
+  * SIGKILL信号（kill -9 pid），程序无法捕获会立即执行退出，无论此信号是否被监听都会立即退出程序
 
 通常只监听SIGINT、SIGQUIT、SIGTERM这三个信号，然后通知各个在此注册的模块保存缓存信息
 

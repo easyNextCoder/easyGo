@@ -6,7 +6,6 @@ import (
 	"os/signal"
 	"sync"
 	"syscall"
-	"testing"
 	"time"
 )
 
@@ -34,7 +33,7 @@ func watch() {
 					c <- &wg
 				}
 				wg.Wait()
-				//os.Exit(0) //正式运行的系统需要加
+				os.Exit(0) //正式运行的系统需要加
 			}
 		}
 	}
@@ -74,10 +73,10 @@ func serverModule2() {
 	}
 }
 
-func Test_signalSaveBeforeStop(t *testing.T) {
+func main() {
 	go watch()
 	go serverModule1()
 	go serverModule2()
-	time.Sleep(time.Second * 12)
+	time.Sleep(time.Second * 60)
 	fmt.Println("system shutdown")
 }
